@@ -226,4 +226,12 @@ print(data.loc[data["Volume"].idxmin(), ["Volume", "Daily_return"]])
 print(data.loc["2025-03-18"])
 print(data.loc["2025-03-17":"2025-03-19"])
 
+correlation = data.corr(numeric_only=True)
+print(correlation)
 
+import seaborn as sns 
+
+plt.figure(figsize=(12,8))
+sns.heatmap(correlation, annot=True, cmap="coolwarm", fmt=".2f")
+plt.title("Correlation Heatmap - Reliance")
+plt.show()
