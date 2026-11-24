@@ -206,8 +206,24 @@ plt.show()
 
 # percentage change in closing price 
 
-data["Daily return"] = data["Close"].pct_change()*100
+data["Daily_return"] = data["Close"].pct_change()*100
 
-print(data[["Close" , "Daily return"]].head(10))
+print(data[["Close" , "Daily_return"]].head(10))
+
+# plotting daily return and volume 
+
+plt.figure(figsize=(10,5))
+
+plt.scatter(data["Volume"],data["Daily_return"])
+plt.title("Daily Return vs Trading Volume")
+plt.xlabel("Trading Volume")
+plt.ylabel("Daily Return (%)")
+
+plt.show()
+
+print(data.loc[data["Volume"].idxmax(), ["Volume", "Daily_return"]])
+print(data.loc[data["Volume"].idxmin(), ["Volume", "Daily_return"]])
+print(data.loc["2025-03-18"])
+print(data.loc["2025-03-17":"2025-03-19"])
 
 
